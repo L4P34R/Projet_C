@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include "shapes.h"
 
 int main() {
-    printf("Hello, World!\n");
+    shape* formes;
+    formes = malloc(1 * sizeoff(shapes))
     return 0;
 }
