@@ -3,7 +3,7 @@
 
 void menu(){
     int action;
-    printf("choisissez :");
+    printf("Veuillez choisir une action :\n1- Ajouter une forme\n2- Afficher la liste des formes\n3- Supprimer une forme\n4- Tracer le dessin\n5- Aide");
     scanf("%d",&action);
     switch (action) {
         case 1:
