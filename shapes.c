@@ -89,7 +89,7 @@ void print_polygon(Polygon * polygon){
 
 Shape *create_empty_shape(SHAPE_TYPE shape_type) {
     Shape *shp = (Shape *) malloc(sizeof(Shape)); shp->ptrShape = NULL;
-    shp->id = 1; // plus tard on appelera get_next_id()
+    shp->id = 1;
     shp-> shape_type = shape_type;
     return shp;
 }
@@ -133,11 +133,11 @@ Shape *create_circle_shape(int px, int py, int radius){
     shp -> ptrShape = circle;
     return shp;
 }
-Shape *create_polygon_shape(int lst[], int n){
+Shape *create_polygon_shape(int coord[], int n){
     Shape* shp = create_empty_shape(POLYGON);
     Point** points = (Point**) malloc(n * sizeof(Point*));
     for (int i = 0; i < n; i++){
-        points[i] = create_point(lst[2 * i], lst[2 * i + 1]);
+        points[i] = create_point(coord[2 * i], coord[2 * i + 1]);
     }
     Polygon* poly = (Polygon*) malloc(sizeof(Polygon*));
     poly -> n = n;
@@ -149,16 +149,22 @@ void delete_shape(Shape * shape){
     switch (shape -> shape_type){
         case 0:
             delete_point(shape -> ptrShape);
+            break;
         case 1:
             delete_line(shape -> ptrShape);
+            break;
         case 2:
             delete_square(shape -> ptrShape);
+            break;
         case 3:
             delete_rectangle(shape -> ptrShape);
+            break;
         case 4:
             delete_circle(shape -> ptrShape);
+            break;
         case 5:
             delete_polygon(shape -> ptrShape);
+            break;
     }
     free(shape);
 }
@@ -167,21 +173,27 @@ void print_shape(Shape * shape){
         case 0:
             printf("POINT ");
             print_point(shape -> ptrShape);
+            break;
         case 1:
             printf("LINE ");
             print_line(shape -> ptrShape);
+            break;
         case 2:
             printf("SQUARE ");
             print_square(shape -> ptrShape);
+            break;
         case 3:
             printf("RECTANGLE" );
             print_rectangle(shape -> ptrShape);
+            break;
         case 4:
             printf("CIRCLE ");
             print_circle(shape -> ptrShape);
+            break;
         case 5:
             printf("POLYGON ");
             print_polygon(shape -> ptrShape);
+            break;
     }
     printf("\n");
 }
