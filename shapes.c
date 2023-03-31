@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "shapes.h"
+#include "id.h"
 
 
 Point *create_point(int px, int py){
@@ -89,7 +90,7 @@ void print_polygon(Polygon * polygon){
 
 Shape *create_empty_shape(SHAPE_TYPE shape_type) {
     Shape *shp = (Shape *) malloc(sizeof(Shape)); shp->ptrShape = NULL;
-    shp->id = 1;
+    shp->id = get_next_id();
     shp-> shape_type = shape_type;
     return shp;
 }
@@ -169,6 +170,7 @@ void delete_shape(Shape * shape){
     free(shape);
 }
 void print_shape(Shape * shape){
+    printf("%d : ", shape -> id);
     switch (shape -> shape_type){
         case 0:
             printf("POINT ");
