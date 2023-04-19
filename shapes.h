@@ -66,7 +66,7 @@ Circle *create_circle(Point * center, int radius);
 void delete_circle(Circle * circle);
 void print_circle(Circle * circle);
 
-Polygon* create_polygon(int n, Point* points);
+Polygon* create_polygon(int n, Point** tab);
 void delete_polygon(Polygon * polygon);
 void print_polygon(Polygon * polygon);
 

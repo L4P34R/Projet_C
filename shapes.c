@@ -74,9 +74,9 @@ void print_circle(Circle * circle){
     printf("%d", circle -> radius);
 }
 
-Polygon *create_polygon(int n, Point lst[]){
+Polygon *create_polygon(int n, Point** tab){
     Polygon* poly = (Polygon*) malloc(sizeof(Polygon));
-    poly -> points = lst;
+    poly -> points = tab;
     return poly;
 }
 void delete_polygon(Polygon * polygon){
