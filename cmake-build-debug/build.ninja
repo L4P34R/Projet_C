@@ -70,6 +70,12 @@ build CMakeFiles/Projet_C.dir/id.c.o: C_COMPILER__Projet_C_Debug /Users/kaisluce
   OBJECT_DIR = CMakeFiles/Projet_C.dir
   OBJECT_FILE_DIR = CMakeFiles/Projet_C.dir
 
+build CMakeFiles/Projet_C.dir/area.c.o: C_COMPILER__Projet_C_Debug /Users/kaisluce/Library/CloudStorage/OneDrive-Efrei/Semestre$ 2/Programation$ en$ C/Projet_C/area.c || cmake_object_order_depends_target_Projet_C
+  DEP_FILE = CMakeFiles/Projet_C.dir/area.c.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu11
+  OBJECT_DIR = CMakeFiles/Projet_C.dir
+  OBJECT_FILE_DIR = CMakeFiles/Projet_C.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Projet_C
@@ -78,7 +84,7 @@ build CMakeFiles/Projet_C.dir/id.c.o: C_COMPILER__Projet_C_Debug /Users/kaisluce
 #############################################
 # Link the executable Projet_C
 
-build Projet_C: C_EXECUTABLE_LINKER__Projet_C_Debug CMakeFiles/Projet_C.dir/main.c.o CMakeFiles/Projet_C.dir/shapes.c.o CMakeFiles/Projet_C.dir/fonctions.c.o CMakeFiles/Projet_C.dir/id.c.o
+build Projet_C: C_EXECUTABLE_LINKER__Projet_C_Debug CMakeFiles/Projet_C.dir/main.c.o CMakeFiles/Projet_C.dir/shapes.c.o CMakeFiles/Projet_C.dir/fonctions.c.o CMakeFiles/Projet_C.dir/id.c.o CMakeFiles/Projet_C.dir/area.c.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0
   OBJECT_DIR = CMakeFiles/Projet_C.dir
   POST_BUILD = :
