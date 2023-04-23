@@ -2,10 +2,12 @@
 #include <stdlib.h>
 #include "fonctions.h"
 #include "shapes.h"
+#include "id.h"
 
 Shape *tableau[100];
+int nb_shape = 0;
 
-void menu(void* shapes){
+void menu(){
     char action;
     printf(" Veuillez choisir une action :\n"
            "        A- Ajouter une forme\n"
@@ -17,10 +19,10 @@ void menu(void* shapes){
     scanf("%c",&action);
     switch (action) {
         case 'A':
-            menuForme(shapes);
+            menuForme();
             break;
         case 'B':
-            menuAfficherforme(shapes);
+            menuAfficherforme();
             break;
         case 'C':
             break;
@@ -30,12 +32,12 @@ void menu(void* shapes){
             break;
         default:
             printf("Veuiller choisir un choix valide !\n\n");
-            menu(shapes);
+            menu();
             break;
     }
 }
 
-void menuForme(void* shapes){
+void menuForme(){
     int choix;
     printf("Veuillez choisir une action :\n"
             "            1- Ajouter un point\n"
@@ -51,11 +53,13 @@ void menuForme(void* shapes){
         case 1:
             printf("Choisir les coordonées x y du point : \n");
             int px1 = 0;
-            int py2 = 0;
-            scanf("%d %d", &px1, &py2);
-            Shape* point = create_point_shape(px1, py2);
+            int py1 = 0;
+            scanf("%d %d", &px1, &py1);
+            Shape* point = create_point_shape(px1,py1);
             tableau[point->id] = point;
-            menuForme(shapes);
+            tableau[nb_shape] = point;
+            nb_shape ++;
+            menu();
             break;
         case 2:
             printf("Choisir les coordonées x1 y1 du premier point de la ligne : \n");
@@ -66,9 +70,11 @@ void menuForme(void* shapes){
             int py22 = 0;
             int px22 = 0;
             scanf("%d %d", &px22, &py22);
-            Shape* line = create_line_shape(px21,py21,px22,py22);
+            Shape* line = create_line_shape(px1, py1, px22, py22);
             tableau[line->id] = line;
-            menuForme(shapes);
+            tableau[nb_shape] = line;
+            nb_shape ++;
+            menu();
             break;
         case 3:
             printf("Choisir les coordonées x1 y1 du point : \n");
@@ -80,7 +86,9 @@ void menuForme(void* shapes){
             scanf("%d",&r);
             Shape* circle = create_circle_shape(px3,py3,r);
             tableau[circle->id] = circle;
-            menuForme(shapes);
+            tableau[nb_shape] = circle;
+            nb_shape ++;
+            menu();
             break;
         case 4:
             printf("Choisir les coordonées x1 y1 du point : \n");
@@ -91,7 +99,9 @@ void menuForme(void* shapes){
             int l1 = 0;
             scanf("%d",&l1);
             Shape* square = create_square_shape(px4, py4, l1);
-            menuForme(shapes);
+            tableau[nb_shape] = square;
+            nb_shape ++;
+            menu();
             break;
         case 5:
             printf("Choisir les coordonées x y du point : \n");
@@ -105,35 +115,41 @@ void menuForme(void* shapes){
             int h1 = 0;
             scanf("%d",&h1);
             Shape* rectangle = create_rectangle_shape(px5, py5,l2,h1);
-            menuForme(shapes);
+            tableau[nb_shape] = rectangle;
+            nb_shape ++;
+            menu();
             break;
         case 6:
             printf("Choisir le nombre de sommet du polygone :\n");
             int n;
-            Point *points = malloc(sizeof(Point[10])) ;
+            int *coord = malloc(n * sizeof(int)) ;
             scanf("%d",&n);
             int px6 = 0;
             int py6 = 0;
-            for (unsigned i = 0; i<n; i++) {
+            for (int i = 0; i<n; i++) {
                 printf("Choisir les coordonées x y du point : \n");
                 scanf("%d %d", &px6, &py6);
+                coord[2 * i] = px6;
+                coord[2 * i + 1] = py6;
             }
-            menuForme(shapes);
+            Shape* poly = create_polygon_shape(coord, n);
+            tableau[nb_shape] = poly;
+            nb_shape ++;
+            menu();
             break;
         case 7:
-            menu(shapes);
+            menu();
             break;
         default:
             printf("Veuiller choisir un choix valide !\n");
-            menuForme(shapes);
+            menuForme();
             break;
     }
 }
 
 void menuAfficherforme(void* shapes){
     printf("Liste des formes :");
-    int n = sizeof(tableau);
-    for (int i = 0; i<1; i++){
+    for (int i = 0; i < nb_shape; i++){
         print_shape(tableau[i]);
     }
 }
