@@ -4,6 +4,4 @@
 
 unsigned int get_next_id();
 
-
-
 #endif

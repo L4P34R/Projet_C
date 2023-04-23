@@ -3,6 +3,7 @@
 #include "fonctions.h"
 #include "shapes.h"
 
+Shape *tableau[100];
 
 void menu(void* shapes){
     char action;
@@ -53,6 +54,7 @@ void menuForme(void* shapes){
             int py2 = 0;
             scanf("%d %d", &px1, &py2);
             Shape* point = create_point_shape(px1, py2);
+            tableau[point->id] = point;
             menuForme(shapes);
             break;
         case 2:
@@ -65,11 +67,11 @@ void menuForme(void* shapes){
             int px22 = 0;
             scanf("%d %d", &px22, &py22);
             Shape* line = create_line_shape(px21,py21,px22,py22);
-            print_shape(line);
+            tableau[line->id] = line;
             menuForme(shapes);
             break;
         case 3:
-            printf("Choisir les coordonées x1 x1 du point : \n");
+            printf("Choisir les coordonées x1 y1 du point : \n");
             int px3 = 0;
             int py3 = 0;
             scanf("%d %d", &px3, &py3);
@@ -77,10 +79,11 @@ void menuForme(void* shapes){
             int r = 0;
             scanf("%d",&r);
             Shape* circle = create_circle_shape(px3,py3,r);
+            tableau[circle->id] = circle;
             menuForme(shapes);
             break;
         case 4:
-            printf("Choisir les coordonées x1 x1 du point : \n");
+            printf("Choisir les coordonées x1 y1 du point : \n");
             int px4 = 0;
             int py4 = 0;
             scanf("%d %d", &px4, &py4);
@@ -91,7 +94,7 @@ void menuForme(void* shapes){
             menuForme(shapes);
             break;
         case 5:
-            printf("Choisir les coordonées x1 x1 du point : \n");
+            printf("Choisir les coordonées x y du point : \n");
             int px5 = 0;
             int py5 = 0;
             scanf("%d %d", &px5, &py5);
@@ -105,18 +108,32 @@ void menuForme(void* shapes){
             menuForme(shapes);
             break;
         case 6:
+            printf("Choisir le nombre de sommet du polygone :\n");
+            int n;
+            Point *points = malloc(sizeof(Point[10])) ;
+            scanf("%d",&n);
+            int px6 = 0;
+            int py6 = 0;
+            for (unsigned i = 0; i<n; i++) {
+                printf("Choisir les coordonées x y du point : \n");
+                scanf("%d %d", &px6, &py6);
+            }
             menuForme(shapes);
             break;
         case 7:
             menu(shapes);
             break;
         default:
-            printf("Veuiller choisir un choix valide !\n\n");
+            printf("Veuiller choisir un choix valide !\n");
             menuForme(shapes);
+            break;
     }
 }
 
 void menuAfficherforme(void* shapes){
     printf("Liste des formes :");
-    print_shape(shapes);
+    int n = sizeof(tableau);
+    for (int i = 0; i<1; i++){
+        print_shape(tableau[i]);
+    }
 }
