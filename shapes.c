@@ -89,8 +89,9 @@ void print_polygon(Polygon * polygon){
 }
 
 Shape *create_empty_shape(SHAPE_TYPE shape_type) {
-    Shape *shp = (Shape *) malloc(sizeof(Shape)); shp->ptrShape = NULL;
-    shp->id = get_next_id();
+    Shape *shp = (Shape *) malloc(sizeof(Shape));
+    shp -> ptrShape = NULL;
+    shp ->id = (int) get_next_id();
     shp-> shape_type = shape_type;
     return shp;
 }
@@ -105,6 +106,7 @@ Shape *create_line_shape(int px1, int py1, int px2, int py2){
     Point* p1 = create_point(px1, py1);
     Point* p2 = create_point(px2, py2);
     Line* line = create_line(p1, p2);
+    shp ->shape_type = LINE;
     shp -> ptrShape = line;
     return shp;
 }
@@ -114,6 +116,7 @@ Shape *create_square_shape(int px, int py, int length){
     Square* square = (Square*) malloc(sizeof(Square*));
     square -> p = p;
     square -> longueur = length;
+    shp ->shape_type = SQUARE;
     shp -> ptrShape = square;
     return shp;
 }
@@ -124,6 +127,7 @@ Shape *create_rectangle_shape(int px, int py, int width, int height){
     rect -> p = p;
     rect -> height = height;
     rect -> width = width;
+    shp ->shape_type = RECTANGLE;
     shp -> ptrShape = rect;
     return shp;
 }
@@ -131,6 +135,8 @@ Shape *create_circle_shape(int px, int py, int radius){
     Shape* shp = create_empty_shape(CIRCLE);
     Point* p = create_point(px, py);
     Circle* circle = create_circle(p, radius);
+    shp ->id = (int) get_next_id();
+    shp ->shape_type = CIRCLE;
     shp -> ptrShape = circle;
     return shp;
 }
