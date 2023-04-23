@@ -8,7 +8,7 @@ Shape *tableau[100];
 int nb_shape = 0;
 
 void menu(){
-    char action;
+    char action = 'A';
     printf(" Veuillez choisir une action :\n"
            "        A- Ajouter une forme\n"
            "        B- Afficher la liste des formes\n"
@@ -16,7 +16,7 @@ void menu(){
            "        D- Tracer le dessin\n"
            "        E- Aide\n");
     printf("Votre choix : ");
-    scanf("%c",&action);
+    scanf(" %c",&action);
     switch (action) {
         case 'A':
             menuForme();
@@ -148,8 +148,9 @@ void menuForme(){
 }
 
 void menuAfficherforme(void* shapes){
-    printf("Liste des formes :");
+    printf("Liste des formes :\n");
     for (int i = 0; i < nb_shape; i++){
         print_shape(tableau[i]);
     }
+    menu();
 }
