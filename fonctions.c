@@ -56,7 +56,6 @@ void menuForme(){
             int py1 = 0;
             scanf("%d %d", &px1, &py1);
             Shape* point = create_point_shape(px1,py1);
-            tableau[point->id] = point;
             tableau[nb_shape] = point;
             nb_shape ++;
             menu();
@@ -71,7 +70,6 @@ void menuForme(){
             int px22 = 0;
             scanf("%d %d", &px22, &py22);
             Shape* line = create_line_shape(px1, py1, px22, py22);
-            tableau[line->id] = line;
             tableau[nb_shape] = line;
             nb_shape ++;
             menu();
@@ -85,7 +83,6 @@ void menuForme(){
             int r = 0;
             scanf("%d",&r);
             Shape* circle = create_circle_shape(px3,py3,r);
-            tableau[circle->id] = circle;
             tableau[nb_shape] = circle;
             nb_shape ++;
             menu();
