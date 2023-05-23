@@ -30,8 +30,11 @@ void delete_area(Area* area){
     free(area);
 }
 void draw_area(Area* area){
+    Pixel*** pixels = malloc(1*sizeof(Pixel**));
+    int nbPixels = 0;
     for(int i = 0; i < area->nb_shape; i++){
-        Pixel** pixels  = create_shape_to_pixel(area->shapes[i]);
+        pixels[nbPixels] = create_shape_to_pixel(area->shapes[i], &nbPixels);
     }
 }
+
 void print_area(Area* area);

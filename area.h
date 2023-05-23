@@ -3,6 +3,7 @@
 #define AREA_H
 
 #include "shapes.h"
+#include "pixel.h"
 #define SHAPE_MAX 100   // Nombre maximum de formes
 #define BOOL int
 
