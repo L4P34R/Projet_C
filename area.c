@@ -29,5 +29,9 @@ void delete_area(Area* area){
     erase_area(area);
     free(area);
 }
-void draw_area(Area* area);
+void draw_area(Area* area){
+    for(int i = 0; i < area->nb_shape; i++){
+        Pixel** pixels  = create_shape_to_pixel(area->shapes[i]);
+    }
+}
 void print_area(Area* area);
